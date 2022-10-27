@@ -7,6 +7,7 @@ class Article
         @author = author
         @magazine = magazine
         @title = title
+        @all << self
       
     end
 
