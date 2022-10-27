@@ -7,13 +7,17 @@ class Author
   
   end
 
+  #access articles
   def articles 
-    Article.filter{|article| article.Author == self}
+    Article.all.select do | article |
+      article.author == self 
+    end
   end
 
   def magazines 
-    articles = Article.filter{|a| a.Article == self }
-    articles.magazines
+    self.articles.map do |article|
+      article.magazine
+    end.uniq
   end
 
 

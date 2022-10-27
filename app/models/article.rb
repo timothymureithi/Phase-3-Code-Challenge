@@ -18,4 +18,8 @@ class Article
         @author
     end
 
+    def title
+        @title
+    end
+
 end
