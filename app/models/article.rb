@@ -2,7 +2,7 @@
 class Article
 
     @@all = []
-    attr_reader :author, :magazine, title 
+    attr_accessor :author, :magazine, :title 
 
     def initialize(author, magazine, title)
         @author = author
@@ -12,16 +12,8 @@ class Article
  
     end
 
-    def magazine
-        @magazine
-    end
+    def self.all
+        @@all
 
-    def author
-        @author
-    end
-
-    def title
-        @title
-    end
-
+end
 end

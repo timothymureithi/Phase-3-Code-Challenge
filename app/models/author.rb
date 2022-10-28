@@ -1,3 +1,4 @@
+require_relative './article'
 class Author
   attr_accessor :name
 
@@ -9,23 +10,23 @@ class Author
   #access articles
   #articles written by author/use filter
   def articles 
-    Article.all.filter {| article |
+    Article.all.filter | article |
       article.author == self 
-    }
+    end
     end
 
 
- # def magazines 
-  #  self.articles.map do |article|
-   #   article.magazine
-    #end.uniq
-  #end
   def magazines 
-    Article.all.select do | article |
-      article.author == self
-    end.map do | contibutedArticles |
+  magazines =  self.articles.map do |article|
+     article.magazine
     end.uniq
   end
+
+ # def magazines 
+  #  Article.all.select do | article |
+   ##end.map do | contibutedArticles |
+    #end.uniq
+ # end
 
   #Association & Aggregate
   #create article instance associates with particular author
@@ -35,7 +36,9 @@ class Author
 
   #unique array of strings with the categories of the magazines the author has contributed to
   def topics_areas
-    self.magazines.map 
-  end
+    self.magazines.map do | magazine |
+      magazine.category
+  end.uniq
+ end
 
-end
+
