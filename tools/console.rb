@@ -8,7 +8,6 @@ end
 ###  WRITE YOUR TEST CODE HERE ###
 
 
-a1 = Article.new()
 
 
 ### DO NOT REMOVE THIS
