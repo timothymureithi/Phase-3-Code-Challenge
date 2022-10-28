@@ -8,6 +8,7 @@ end
 ###  WRITE YOUR TEST CODE HERE ###
 
 
+a1 = Article.new("Rishi Sunak, Britains youngest PM")
 
 
 ### DO NOT REMOVE THIS

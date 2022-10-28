@@ -1,27 +1,25 @@
 class Author
   attr_accessor :name
-  attr_accessor :articles
 
 
   def initialize(name)
     @name = name
-    @articles = []  
   end
 
   #access articles
-  #articles written by author
+  #articles written by author/use filter
   def articles 
-    Article.all.select do | article |
+    Article.all.filter {| article |
       article.author == self 
+    }
     end
-  end
+
 
  # def magazines 
   #  self.articles.map do |article|
    #   article.magazine
     #end.uniq
   #end
-
   def magazines 
     Article.all.select do | article |
       article.author == self
@@ -29,5 +27,15 @@ class Author
     end.uniq
   end
 
+  #Association & Aggregate
+  #create article instance associates with particular author
+  def add_article(magazine, title)
+    Article.new(magazine, title)
+  end
+
+  #unique array of strings with the categories of the magazines the author has contributed to
+  def topics_areas
+    self.magazines.map 
+  end
 
 end
