@@ -1,4 +1,3 @@
-require_relative './article'
 class Magazine
   attr_accessor :name, :category
   @@all = []
@@ -14,27 +13,23 @@ class Magazine
     end
 
     #contributors
-    #return array of Author instances who have written for this magazine
+    #return array of Author instances who have written for this magazine/ use filter
     def contributors
-      contributed_articles.map do | my_articles |
-        my_articles.author
-        end
+      Article.all.filter { | article | article.magazine.name==@name}.map { |article|article.author.name}.uniq
         end
 
 
     #find by name
-    def self.find_by_name mag_name
-      Magazine.all.find {|magazine| magazine.name == mag_name}
+    def self.find_by_name (name)
+      Magazine.all.find  {|magazine| magazine.name == name} 
   end
-    
 
+  
     #title of article
     def article_titles
-    contributed_articles.map do | my_articles |
-      my_articles.title
+    self.articles.map { | article | article.title}
     end
-    end
-
+    
 
     #contributing authors
     def contributing_authors 
@@ -43,7 +38,12 @@ class Magazine
       end
     end
     
-
-    #articles for magazines
-
-  end
+#private 
+private
+    def contributed_articles
+      Article.all.filter do |article|
+        article.magazine == self
+      end
+      end
+end
+  

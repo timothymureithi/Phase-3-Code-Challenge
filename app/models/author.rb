@@ -1,4 +1,3 @@
-require_relative './article'
 class Author
   attr_reader :name
 
@@ -9,7 +8,7 @@ class Author
 
   #articles written by author/use filter
   def articles 
-    Article.all.filter{|article| article.author == self}
+    Article.all.filter{|article| article.author == @name}
     end
 
 
@@ -37,8 +36,5 @@ class Author
 
 end
 
-author_1=Author.new("Thierry Henry")
-article1 = Article.new("Thierry Henry", "Football", "EPL delay")
-puts author_1.articles
 
 
