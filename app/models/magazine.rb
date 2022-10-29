@@ -1,5 +1,3 @@
-require_relative './article'
-
 class Magazine
   attr_accessor :name, :category
   @@all = []
@@ -15,8 +13,9 @@ class Magazine
     end
 
     def articles 
-      Article.all.filter{|article| article.author == @name}
+      Article.all.filter{|article| article.magazine.name == @name}
       end
+
 
     #contributors
     #return array of Author instances who have written for this magazine/ use filter
