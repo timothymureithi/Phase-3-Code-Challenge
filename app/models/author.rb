@@ -1,19 +1,25 @@
 class Author
+  #name cannot be changed
   attr_reader :name
-
+ #@@all = []
 
   def initialize(name)
     @name = name
+  # @@all << self 
   end
+
+# def self.all
+#  @@all
+#   end
 
   #articles written by author/use filter
   def articles 
-    Article.all.filter{|article| article.author == @name}
+    Article.all.filter {|article| article.author == @name}
     end
 
 
   def magazines 
-  magazines articles.map { |article| article.magazine}.uniq
+  articles.map { |article| article.magazine }.uniq
   end
 
  # def magazines 
@@ -30,9 +36,8 @@ class Author
 
   #unique array of strings with the categories of the magazines the author has contributed to
   def topics_areas
-    magazines.collect { | magazine | magazine.category}.uniq
+    magazines.map { |magazine| magazine.category }.uniq
  end
-
 
 end
 
